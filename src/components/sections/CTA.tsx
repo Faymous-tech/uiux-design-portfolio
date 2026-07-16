@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { CONTACT_EMAIL } from "@/lib/site";
 
 interface Props {
   lines?: string[][];
@@ -18,7 +19,7 @@ export default function CTA({
   lines       = DEFAULT_LINES,
   circleWord  = DEFAULT_CIRCLE,
   description = "Have a project in mind? I'd love to hear about it. Let's build something worth remembering.",
-  ctaHref     = "mailto:aisidafamous@gmail.com",
+  ctaHref     = `mailto:${CONTACT_EMAIL}`,
   ctaText     = "Get in touch →",
   bgColor     = "#F5F2EB",
 }: Props) {

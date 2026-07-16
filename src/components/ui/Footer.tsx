@@ -1,7 +1,9 @@
+import { CONTACT_EMAIL } from "@/lib/site";
+
 const socialLinks = [
   { label: "LinkedIn", href: "https://linkedin.com/in/faymousaisida" },
   { label: "Dribbble", href: "https://dribbble.com/faymousaisida" },
-  { label: "Email",    href: "mailto:hello@faymousaisida.com" },
+  { label: "Email",    href: `mailto:${CONTACT_EMAIL}` },
 ];
 
 export default function Footer() {
@@ -138,7 +140,7 @@ export default function Footer() {
                 color:      "#6B6B6B",
               }}
             >
-              © 2025 Faymous Aisida
+              © {new Date().getFullYear()} Faymous Aisida
             </span>
           </div>
 

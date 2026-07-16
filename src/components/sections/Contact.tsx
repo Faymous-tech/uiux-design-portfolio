@@ -1,3 +1,5 @@
+import { CONTACT_EMAIL } from "@/lib/site";
+
 export default function Contact() {
   return (
     <section
@@ -14,7 +16,7 @@ export default function Contact() {
         </p>
 
         <a
-          href="mailto:your@email.com"
+          href={`mailto:${CONTACT_EMAIL}`}
           className="inline-flex items-center gap-2 bg-neutral-900 text-white text-sm font-medium px-6 py-3 rounded-full hover:bg-neutral-700 transition-colors"
         >
           Say hello

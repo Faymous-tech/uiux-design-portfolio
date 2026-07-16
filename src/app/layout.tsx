@@ -10,8 +10,8 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio — UI/UX Designer",
-  description: "UI/UX designer crafting intuitive, beautiful digital experiences.",
+  title: "Faymous Aisida — UI/UX Designer",
+  description: "UI/UX designer based in Lagos crafting intuitive digital experiences for fintech, AI, fashion, and beyond.",
 };
 
 export default function RootLayout({
