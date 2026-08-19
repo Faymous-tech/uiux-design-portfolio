@@ -156,47 +156,29 @@ export default function CaseStudyPage() {
           padding: 32px 0;
           text-decoration: none;
           cursor: pointer;
+          position: relative;
+          z-index: 1;
           transition: background 0.2s ease;
         }
-        .more-row:hover { background: rgba(10,10,10,0.02); }
+        .more-row:hover { background: rgba(10,10,10,0.02); z-index: 10; }
 
-        .more-row-thumb {
-          width: 80px;
-          height: 80px;
-          border-radius: 8px;
-          overflow: hidden;
-          flex-shrink: 0;
-          position: relative;
-        }
-        .more-row-thumb img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          filter: grayscale(100%);
-          transform: translateY(0);
-          transition: filter 0.6s ease-in-out, transform 0.4s ease;
-        }
-        .more-row:hover .more-row-thumb img {
-          filter: grayscale(0%);
-          transform: translateY(-6px);
-        }
-
-        .more-row-text { flex: 1; }
         .more-row-name {
           font-family: var(--font-display);
           font-weight: 700;
           font-size: 28px;
           color: #0A0A0A;
+          flex-shrink: 0;
         }
         .more-row-desc {
           font-family: var(--font-display);
           font-weight: 300;
           font-size: 16px;
           color: #6B6B6B;
-          margin-top: 4px;
+          flex: 1;
+          text-align: right;
           line-height: 1.5;
+          max-width: 480px;
         }
-
         .more-row-arrow {
           font-family: var(--font-display);
           font-weight: 400;
@@ -207,10 +189,37 @@ export default function CaseStudyPage() {
         }
         .more-row:hover .more-row-arrow { color: #0A0A0A; }
 
+        /* Hover-reveal Polaroid thumbnail */
+        .more-row-reveal {
+          position: absolute;
+          left: 0;
+          top: 50%;
+          background: white;
+          padding: 6px;
+          border-radius: 6px;
+          box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+          opacity: 0;
+          pointer-events: none;
+          transform: translateY(-50%) rotate(-4deg) scale(0.9);
+          transition: opacity 0.3s ease, transform 0.3s ease;
+          z-index: 10;
+        }
+        .more-row:hover .more-row-reveal {
+          opacity: 1;
+          transform: translateY(-50%) rotate(-4deg) scale(1);
+        }
+        .more-row-reveal-inner {
+          width: 140px;
+          height: 105px;
+          position: relative;
+          overflow: hidden;
+          border-radius: 2px;
+        }
+
         @media (max-width: 767px) {
-          .more-row-thumb { width: 60px; height: 60px; }
-          .more-row-name  { font-size: 20px; }
-          .more-row-desc  { display: none; }
+          .more-row-reveal { display: none; }
+          .more-row-name   { font-size: 20px; }
+          .more-row-desc   { display: none; }
         }
 
         /* Showcase caption row */
@@ -577,24 +586,26 @@ export default function CaseStudyPage() {
             <Link key={p.id} href={`/work/${p.id}`} className="more-row"
               style={{ borderBottom: i < otherProjects.length - 1 ? "1px solid rgba(10,10,10,0.1)" : "none" }}
             >
-              {/* 1. Thumbnail */}
-              <div className="more-row-thumb">
-                <Image
-                  src={p.heroImage}
-                  alt={p.title}
-                  fill
-                  style={{ objectFit: "cover" }}
-                  sizes="80px"
-                />
+              {/* Hover-reveal Polaroid thumbnail — floats above row on hover */}
+              <div className="more-row-reveal">
+                <div className="more-row-reveal-inner">
+                  <Image
+                    src={p.heroImage}
+                    alt={p.title}
+                    fill
+                    style={{ objectFit: "cover" }}
+                    sizes="140px"
+                  />
+                </div>
               </div>
 
-              {/* 2. Name + description */}
-              <div className="more-row-text">
-                <div className="more-row-name">{p.title}</div>
-                <div className="more-row-desc">{p.description}</div>
-              </div>
+              {/* Project name */}
+              <div className="more-row-name">{p.title}</div>
 
-              {/* 3. Arrow */}
+              {/* Description */}
+              <div className="more-row-desc">{p.description}</div>
+
+              {/* Arrow */}
               <span className="more-row-arrow">→</span>
             </Link>
           ))}
