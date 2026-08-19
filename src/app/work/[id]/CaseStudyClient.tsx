@@ -152,33 +152,65 @@ export default function CaseStudyPage() {
         .more-row {
           display: flex;
           align-items: center;
-          justify-content: space-between;
           gap: 24px;
           padding: 32px 0;
           text-decoration: none;
           cursor: pointer;
+          transition: background 0.2s ease;
         }
+        .more-row:hover { background: rgba(10,10,10,0.02); }
+
+        .more-row-thumb {
+          width: 80px;
+          height: 80px;
+          border-radius: 8px;
+          overflow: hidden;
+          flex-shrink: 0;
+          position: relative;
+        }
+        .more-row-thumb img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: grayscale(100%);
+          transform: translateY(0);
+          transition: filter 0.6s ease-in-out, transform 0.4s ease;
+        }
+        .more-row:hover .more-row-thumb img {
+          filter: grayscale(0%);
+          transform: translateY(-6px);
+        }
+
+        .more-row-text { flex: 1; }
         .more-row-name {
           font-family: var(--font-display);
           font-weight: 700;
           font-size: 28px;
           color: #0A0A0A;
-          transition: color 0.3s ease;
-          display: flex;
-          align-items: center;
-          gap: 10px;
         }
+        .more-row-desc {
+          font-family: var(--font-display);
+          font-weight: 300;
+          font-size: 16px;
+          color: #6B6B6B;
+          margin-top: 4px;
+          line-height: 1.5;
+        }
+
         .more-row-arrow {
-          opacity: 0;
-          transform: translateX(-6px);
-          transition: opacity 0.3s ease, transform 0.3s ease;
+          font-family: var(--font-display);
           font-weight: 400;
+          font-size: 20px;
+          color: #6B6B6B;
+          flex-shrink: 0;
+          transition: color 0.3s ease;
         }
-        .more-row:hover .more-row-name  { color: #6B6B6B; }
-        .more-row:hover .more-row-arrow { opacity: 1; transform: translateX(0); }
+        .more-row:hover .more-row-arrow { color: #0A0A0A; }
+
         @media (max-width: 767px) {
-          .more-row { flex-direction: column; align-items: flex-start; gap: 8px; }
-          .more-row-desc { text-align: left !important; }
+          .more-row-thumb { width: 60px; height: 60px; }
+          .more-row-name  { font-size: 20px; }
+          .more-row-desc  { display: none; }
         }
 
         /* Showcase caption row */
@@ -545,27 +577,25 @@ export default function CaseStudyPage() {
             <Link key={p.id} href={`/work/${p.id}`} className="more-row"
               style={{ borderBottom: i < otherProjects.length - 1 ? "1px solid rgba(10,10,10,0.1)" : "none" }}
             >
-              {/* Left: project name + hover arrow */}
-              <div className="more-row-name">
-                {p.title}
-                <span className="more-row-arrow">→</span>
+              {/* 1. Thumbnail */}
+              <div className="more-row-thumb">
+                <Image
+                  src={p.heroImage}
+                  alt={p.title}
+                  fill
+                  style={{ objectFit: "cover" }}
+                  sizes="80px"
+                />
               </div>
 
-              {/* Right: one-line description */}
-              <div
-                className="more-row-desc"
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontWeight: 300,
-                  fontSize:   "16px",
-                  color:      "#6B6B6B",
-                  maxWidth:   "480px",
-                  textAlign:  "right",
-                  lineHeight: 1.5,
-                }}
-              >
-                {p.description}
+              {/* 2. Name + description */}
+              <div className="more-row-text">
+                <div className="more-row-name">{p.title}</div>
+                <div className="more-row-desc">{p.description}</div>
               </div>
+
+              {/* 3. Arrow */}
+              <span className="more-row-arrow">→</span>
             </Link>
           ))}
         </div>
