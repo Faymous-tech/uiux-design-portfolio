@@ -375,7 +375,7 @@ export default function CaseStudyPage() {
           <div style={{ display: "grid", gridTemplateColumns: "55fr 45fr", gap: "48px", alignItems: "start" }}>
             {/* Left — research paragraph */}
             <p style={{ fontFamily: "var(--font-display)", fontWeight: 400, fontSize: "17px", color: "#0A0A0A", lineHeight: 1.8, maxWidth: "560px", margin: 0 }}>
-              The research phase focused on understanding the core pain points users face when navigating property discovery and mortgage financing. We conducted user interviews, competitive analysis, and journey mapping to identify where the current experience breaks down and where the biggest opportunities for improvement existed.
+              {project.research ?? "The research phase focused on understanding the core pain points users face when navigating property discovery and mortgage financing. We conducted user interviews, competitive analysis, and journey mapping to identify where the current experience breaks down and where the biggest opportunities for improvement existed."}
             </p>
 
             {/* Right — placeholder for wireframe/process images */}

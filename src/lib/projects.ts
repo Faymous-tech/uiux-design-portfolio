@@ -14,6 +14,7 @@ export type Project = {
   solution?: string
   story?: string[]
   outcome?: string
+  research?: string
   showcaseImages?: { src: string; caption: string }[]
   processImages?: { src: string; caption: string }[]
 }
@@ -38,6 +39,7 @@ export const projects: Project[] = [
       "The product needed to scale from a single dashboard into four distinct specialized tools, each with its own workflows and data visualizations, all while maintaining one unified design language.",
     ],
     outcome: "Delivered a complete AI workforce platform interface across four distinct product personas, each with its own visual identity within a unified system.",
+    research: "The research phase focused on understanding how businesses currently handle tasks like content creation, data analysis, research, and virtual assistance — and where those workflows break down. We conducted interviews with small business owners, freelancers, and operations leads to map the real cost of task overload, tool fragmentation, and hiring constraints. Competitive analysis revealed that most AI tools feel impersonal and transactional, leaving users to distrust outputs or micromanage every step. The biggest opportunity wasn't just automation — it was trust. Businesses didn't need more software; they needed tools that felt like capable teammates, with enough personality and reliability to hand over real work without second-guessing every result.",
     showcaseImages: [],
   },
   {
