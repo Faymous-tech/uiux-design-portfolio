@@ -193,6 +193,15 @@ export default function CaseStudyPage() {
         /* Design system / More flows half-cards */
         .ds-card { height: 700px; }
         @media (max-width: 767px) { .ds-card { height: 300px; } }
+
+        /* Scrollable visual explorations container */
+        .ve-scroll {
+          scrollbar-width: thin;
+          scrollbar-color: rgba(10,10,10,0.2) transparent;
+        }
+        .ve-scroll::-webkit-scrollbar { width: 4px; }
+        .ve-scroll::-webkit-scrollbar-track { background: transparent; }
+        .ve-scroll::-webkit-scrollbar-thumb { background: rgba(10,10,10,0.2); border-radius: 2px; }
       `}</style>
 
       <Nav />
@@ -423,15 +432,48 @@ export default function CaseStudyPage() {
           </p>
 
           {/* Full-width image */}
-          <div style={{ position: "relative", aspectRatio: "16 / 9", borderRadius: "16px", overflow: "hidden", width: "100%" }}>
-            <Image
-              src={project.visualExplorationsImage ?? showcaseList[1].src}
-              alt={`${project.title} — screen 2`}
-              fill
-              style={{ objectFit: "cover" }}
-              sizes="(max-width: 768px) 100vw, 90vw"
-            />
-          </div>
+          {project.visualExplorationsImage ? (
+            /* Scrollable treatment — outer clips border-radius, gradient stays fixed */
+            <div style={{ position: "relative", borderRadius: "16px", overflow: "hidden", width: "100%" }}>
+              <div
+                className="ve-scroll"
+                style={{ aspectRatio: "16 / 9", overflowY: "auto", overflowX: "hidden", width: "100%" }}
+              >
+                <Image
+                  src={project.visualExplorationsImage}
+                  alt={`${project.title} — visual explorations`}
+                  width={0}
+                  height={0}
+                  sizes="(max-width: 768px) 100vw, 90vw"
+                  style={{ width: "100%", height: "auto", display: "block" }}
+                />
+              </div>
+              {/* Scroll-hint gradient pinned to bottom — does not scroll with content */}
+              <div
+                style={{
+                  position:   "absolute",
+                  bottom:     0,
+                  left:       0,
+                  right:      0,
+                  height:     "80px",
+                  background: "linear-gradient(to bottom, transparent, #F5F2EB)",
+                  pointerEvents: "none",
+                  zIndex:     2,
+                }}
+              />
+            </div>
+          ) : (
+            /* Default treatment — cropped fill image */
+            <div style={{ position: "relative", aspectRatio: "16 / 9", borderRadius: "16px", overflow: "hidden", width: "100%" }}>
+              <Image
+                src={showcaseList[1].src}
+                alt={`${project.title} — screen 2`}
+                fill
+                style={{ objectFit: "cover" }}
+                sizes="(max-width: 768px) 100vw, 90vw"
+              />
+            </div>
+          )}
 
           {/* Number + caption */}
           <div className="cs-caption">
