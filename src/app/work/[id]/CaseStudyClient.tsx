@@ -176,20 +176,11 @@ export default function CaseStudyPage() {
           font-weight: 300;
           font-size: 16px;
           color: #6B6B6B;
-          flex: 1;
+          margin-left: auto;
           text-align: right;
           line-height: 1.5;
           max-width: 480px;
         }
-        .more-row-arrow {
-          font-family: var(--font-display);
-          font-weight: 400;
-          font-size: 20px;
-          color: #6B6B6B;
-          flex-shrink: 0;
-          transition: color 0.3s ease;
-        }
-        .more-row:hover .more-row-arrow { color: #0A0A0A; }
 
         @media (max-width: 767px) {
           .more-row-name { font-size: 20px; }
@@ -594,9 +585,6 @@ export default function CaseStudyPage() {
 
                 {/* Description */}
                 <div className="more-row-desc">{p.description}</div>
-
-                {/* Arrow */}
-                <span className="more-row-arrow">→</span>
               </Link>
             );
           })}
