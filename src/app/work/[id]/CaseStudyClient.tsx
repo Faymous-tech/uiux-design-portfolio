@@ -425,7 +425,7 @@ export default function CaseStudyPage() {
           {/* Full-width image */}
           <div style={{ position: "relative", aspectRatio: "16 / 9", borderRadius: "16px", overflow: "hidden", width: "100%" }}>
             <Image
-              src={showcaseList[1].src}
+              src={project.visualExplorationsImage ?? showcaseList[1].src}
               alt={`${project.title} — screen 2`}
               fill
               style={{ objectFit: "cover" }}
