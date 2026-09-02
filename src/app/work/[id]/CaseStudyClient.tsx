@@ -378,21 +378,33 @@ export default function CaseStudyPage() {
               {project.research ?? "The research phase focused on understanding the core pain points users face when navigating property discovery and mortgage financing. We conducted user interviews, competitive analysis, and journey mapping to identify where the current experience breaks down and where the biggest opportunities for improvement existed."}
             </p>
 
-            {/* Right — placeholder for wireframe/process images */}
-            <div
-              style={{
-                backgroundColor: "#E8E4DC",
-                borderRadius:    "12px",
-                aspectRatio:     "4 / 3",
-                display:         "flex",
-                alignItems:      "center",
-                justifyContent:  "center",
-              }}
-            >
-              <span style={{ fontFamily: "var(--font-display)", fontWeight: 400, fontSize: "13px", color: "#6B6B6B" }}>
-                Research visuals coming soon
-              </span>
-            </div>
+            {/* Right — research visual or placeholder */}
+            {project.researchImage ? (
+              <div style={{ position: "relative", aspectRatio: "4 / 3", borderRadius: "16px", overflow: "hidden" }}>
+                <Image
+                  src={project.researchImage}
+                  alt={`${project.title} — research`}
+                  fill
+                  style={{ objectFit: "cover" }}
+                  sizes="(max-width: 768px) 100vw, 45vw"
+                />
+              </div>
+            ) : (
+              <div
+                style={{
+                  backgroundColor: "#E8E4DC",
+                  borderRadius:    "12px",
+                  aspectRatio:     "4 / 3",
+                  display:         "flex",
+                  alignItems:      "center",
+                  justifyContent:  "center",
+                }}
+              >
+                <span style={{ fontFamily: "var(--font-display)", fontWeight: 400, fontSize: "13px", color: "#6B6B6B" }}>
+                  Research visuals coming soon
+                </span>
+              </div>
+            )}
           </div>
         </div>
 
