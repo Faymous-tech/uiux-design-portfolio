@@ -503,7 +503,10 @@ export default function CaseStudyPage() {
 
               {/* Two half-width cards */}
               <div style={{ display: "flex", gap: "24px", flexWrap: "wrap" }}>
-                {[cardA, cardB].map((card, ci) => (
+                {([
+                  { card: cardA, scrollSrc: project.moreFlowsImage1 },
+                  { card: cardB, scrollSrc: project.moreFlowsImage2 },
+                ] as { card: typeof cardA; scrollSrc: string | undefined }[]).map(({ card, scrollSrc }, ci) => (
                   <div
                     key={ci}
                     className="ds-card"
@@ -514,12 +517,26 @@ export default function CaseStudyPage() {
                       overflow:     "hidden",
                       position:     "relative",
                       backgroundColor: "#E8E4DC",
-                      display:      "flex",
-                      alignItems:   "center",
-                      justifyContent: "center",
+                      display:      scrollSrc || card ? "block" : "flex",
+                      alignItems:   scrollSrc || card ? undefined : "center",
+                      justifyContent: scrollSrc || card ? undefined : "center",
                     }}
                   >
-                    {card ? (
+                    {scrollSrc ? (
+                      <div
+                        className="ve-scroll"
+                        style={{ width: "100%", height: "100%", overflowY: "auto", overflowX: "hidden" }}
+                      >
+                        <Image
+                          src={scrollSrc}
+                          alt={`${project.title} — ${label} ${ci + 1}`}
+                          width={0}
+                          height={0}
+                          sizes="(max-width: 768px) 100vw, 45vw"
+                          style={{ width: "100%", height: "auto", display: "block" }}
+                        />
+                      </div>
+                    ) : card ? (
                       <Image
                         src={card.src}
                         alt={`${project.title} — ${label} ${ci + 1}`}
