@@ -448,19 +448,6 @@ export default function CaseStudyPage() {
                   style={{ width: "100%", height: "auto", display: "block" }}
                 />
               </div>
-              {/* Scroll-hint gradient pinned to bottom — does not scroll with content */}
-              <div
-                style={{
-                  position:   "absolute",
-                  bottom:     0,
-                  left:       0,
-                  right:      0,
-                  height:     "80px",
-                  background: "linear-gradient(to bottom, transparent, #F5F2EB)",
-                  pointerEvents: "none",
-                  zIndex:     2,
-                }}
-              />
             </div>
           ) : (
             /* Default treatment — cropped fill image */
