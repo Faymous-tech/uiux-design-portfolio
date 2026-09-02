@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "next/navigation";
 import Nav from "@/components/ui/Nav";
 import Footer from "@/components/ui/Footer";
@@ -61,6 +61,8 @@ export default function CaseStudyPage() {
   const index   = projects.findIndex((p) => p.id === id);
   const project = projects[index];
   const next    = projects[(index + 1) % projects.length];
+
+  const [hoveredRow, setHoveredRow] = useState<number | null>(null);
 
   const heroRef      = useRef<HTMLDivElement>(null);
   const problemRef   = useRef<HTMLDivElement>(null);
@@ -189,37 +191,9 @@ export default function CaseStudyPage() {
         }
         .more-row:hover .more-row-arrow { color: #0A0A0A; }
 
-        /* Hover-reveal Polaroid thumbnail */
-        .more-row-reveal {
-          position: absolute;
-          left: 0;
-          top: 50%;
-          background: white;
-          padding: 6px;
-          border-radius: 6px;
-          box-shadow: 0 12px 24px rgba(0,0,0,0.15);
-          opacity: 0;
-          pointer-events: none;
-          transform: translateY(-50%) rotate(-4deg) scale(0.9);
-          transition: opacity 0.3s ease, transform 0.3s ease;
-          z-index: 10;
-        }
-        .more-row:hover .more-row-reveal {
-          opacity: 1;
-          transform: translateY(-50%) rotate(-4deg) scale(1);
-        }
-        .more-row-reveal-inner {
-          width: 140px;
-          height: 105px;
-          position: relative;
-          overflow: hidden;
-          border-radius: 2px;
-        }
-
         @media (max-width: 767px) {
-          .more-row-reveal { display: none; }
-          .more-row-name   { font-size: 20px; }
-          .more-row-desc   { display: none; }
+          .more-row-name { font-size: 20px; }
+          .more-row-desc { display: none; }
         }
 
         /* Showcase caption row */
@@ -582,33 +556,50 @@ export default function CaseStudyPage() {
           </h2>
 
           {/* Project rows */}
-          {otherProjects.map((p, i) => (
-            <Link key={p.id} href={`/work/${p.id}`} className="more-row"
-              style={{ borderBottom: i < otherProjects.length - 1 ? "1px solid rgba(10,10,10,0.1)" : "none" }}
-            >
-              {/* Hover-reveal Polaroid thumbnail — floats above row on hover */}
-              <div className="more-row-reveal">
-                <div className="more-row-reveal-inner">
-                  <Image
-                    src={p.heroImage}
-                    alt={p.title}
-                    fill
-                    style={{ objectFit: "cover" }}
-                    sizes="140px"
-                  />
+          {otherProjects.map((p, i) => {
+            const isHovered = hoveredRow === i;
+            return (
+              <Link
+                key={p.id}
+                href={`/work/${p.id}`}
+                className="more-row"
+                style={{ borderBottom: i < otherProjects.length - 1 ? "1px solid rgba(10,10,10,0.1)" : "none" }}
+                onMouseEnter={() => setHoveredRow(i)}
+                onMouseLeave={() => setHoveredRow(null)}
+              >
+                {/* Hover-reveal Polaroid — position:absolute inline-guaranteed, never in flow */}
+                <div
+                  style={{
+                    position:   "absolute",
+                    left:       "50%",
+                    top:        "50%",
+                    background: "white",
+                    padding:    "6px",
+                    borderRadius: "6px",
+                    boxShadow:  "0 12px 24px rgba(0,0,0,0.15)",
+                    opacity:    isHovered ? 1 : 0,
+                    pointerEvents: "none",
+                    transform:  `translateX(-50%) translateY(-50%) rotate(-4deg) scale(${isHovered ? 1 : 0.9})`,
+                    transition: "opacity 0.3s ease, transform 0.3s ease",
+                    zIndex:     20,
+                  }}
+                >
+                  <div style={{ width: "140px", height: "105px", position: "relative", overflow: "hidden", borderRadius: "2px" }}>
+                    <Image src={p.heroImage} alt={p.title} fill style={{ objectFit: "cover" }} sizes="140px" />
+                  </div>
                 </div>
-              </div>
 
-              {/* Project name */}
-              <div className="more-row-name">{p.title}</div>
+                {/* Project name */}
+                <div className="more-row-name">{p.title}</div>
 
-              {/* Description */}
-              <div className="more-row-desc">{p.description}</div>
+                {/* Description */}
+                <div className="more-row-desc">{p.description}</div>
 
-              {/* Arrow */}
-              <span className="more-row-arrow">→</span>
-            </Link>
-          ))}
+                {/* Arrow */}
+                <span className="more-row-arrow">→</span>
+              </Link>
+            );
+          })}
         </div>
 
         {/* ── 7. CLOSING CTA ───────────────────────────────────────── */}
