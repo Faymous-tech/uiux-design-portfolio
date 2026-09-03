@@ -387,8 +387,19 @@ export default function CaseStudyPage() {
               {project.research ?? "The research phase focused on understanding the core pain points users face when navigating property discovery and mortgage financing. We conducted user interviews, competitive analysis, and journey mapping to identify where the current experience breaks down and where the biggest opportunities for improvement existed."}
             </p>
 
-            {/* Right — research visual or placeholder */}
-            {project.researchImage ? (
+            {/* Right — research video, scrollable image, or placeholder */}
+            {project.researchVideo ? (
+              <div style={{ aspectRatio: "4 / 3", borderRadius: "16px", overflow: "hidden", backgroundColor: "#E8E4DC" }}>
+                <video
+                  src={project.researchVideo}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                />
+              </div>
+            ) : project.researchImage ? (
               <div
                 className="ve-scroll"
                 style={{ aspectRatio: "4 / 3", borderRadius: "16px", overflowY: "auto", overflowX: "hidden", backgroundColor: "#E8E4DC", padding: "20px", boxSizing: "border-box" }}
