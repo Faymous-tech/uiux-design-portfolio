@@ -384,22 +384,20 @@ export default function CaseStudyPage() {
           <div style={{ display: "grid", gridTemplateColumns: "55fr 45fr", gap: "48px", alignItems: "start" }}>
             {/* Left — research paragraph */}
             <p style={{ fontFamily: "var(--font-display)", fontWeight: 400, fontSize: "17px", color: "#0A0A0A", lineHeight: 1.8, maxWidth: "560px", margin: 0 }}>
-              {project.research ?? "The research phase focused on understanding the core pain points users face when navigating property discovery and mortgage financing. We conducted user interviews, competitive analysis, and journey mapping to identify where the current experience breaks down and where the biggest opportunities for improvement existed."}
+              {project.research ?? ""}
             </p>
 
             {/* Right — research video, scrollable image, or placeholder */}
             {project.researchVideo ? (
-              <div style={{ aspectRatio: "4 / 3", borderRadius: "16px", overflow: "hidden", backgroundColor: "#F5F2EB" }}>
-                <div style={{ width: "100%", height: "100%", padding: "24px", boxSizing: "border-box" }}>
-                  <video
-                    src={project.researchVideo}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }}
-                  />
-                </div>
+              <div style={{ aspectRatio: "4 / 3", borderRadius: "16px", overflow: "hidden", backgroundColor: "#F5F2EB", padding: "24px", boxSizing: "border-box" }}>
+                <video
+                  src={project.researchVideo}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }}
+                />
               </div>
             ) : project.researchImage ? (
               <div
