@@ -387,8 +387,21 @@ export default function CaseStudyPage() {
               {project.research ?? ""}
             </p>
 
-            {/* Right — research image or placeholder */}
-            {project.researchImage ? (
+            {/* Right — research video, image, or placeholder */}
+            {project.researchVideo ? (
+              <div style={{ borderRadius: "16px", overflow: "hidden", backgroundColor: "#F5F2EB" }}>
+                <div style={{ aspectRatio: "4 / 3", padding: "20px", boxSizing: "border-box" }}>
+                  <video
+                    src={project.researchVideo}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }}
+                  />
+                </div>
+              </div>
+            ) : project.researchImage ? (
               <div style={{ position: "relative", aspectRatio: "4 / 3", borderRadius: "16px", overflow: "hidden" }}>
                 <Image
                   src={project.researchImage}
