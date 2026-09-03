@@ -391,7 +391,7 @@ export default function CaseStudyPage() {
             {project.researchImage ? (
               <div
                 className="ve-scroll"
-                style={{ aspectRatio: "4 / 3", borderRadius: "16px", overflowY: "auto", overflowX: "hidden" }}
+                style={{ aspectRatio: "4 / 3", borderRadius: "16px", overflowY: "auto", overflowX: "hidden", backgroundColor: "#E8E4DC", padding: "20px", boxSizing: "border-box" }}
               >
                 <Image
                   src={project.researchImage}
@@ -438,10 +438,10 @@ export default function CaseStudyPage() {
           {/* Full-width image */}
           {project.visualExplorationsImage ? (
             /* Scrollable treatment — outer clips border-radius, gradient stays fixed */
-            <div style={{ position: "relative", borderRadius: "16px", overflow: "hidden", width: "100%" }}>
+            <div style={{ position: "relative", borderRadius: "16px", overflow: "hidden", width: "100%", backgroundColor: "#E8E4DC" }}>
               <div
                 className="ve-scroll"
-                style={{ aspectRatio: "16 / 9", overflowY: "auto", overflowX: "hidden", width: "100%" }}
+                style={{ aspectRatio: "16 / 9", overflowY: "auto", overflowX: "hidden", width: "100%", padding: "20px", boxSizing: "border-box" }}
               >
                 <Image
                   src={project.visualExplorationsImage}
@@ -529,7 +529,7 @@ export default function CaseStudyPage() {
                     {scrollSrc ? (
                       <div
                         className="ve-scroll"
-                        style={{ width: "100%", height: "100%", overflowY: "auto", overflowX: "hidden" }}
+                        style={{ width: "100%", height: "100%", overflowY: "auto", overflowX: "hidden", padding: "20px", boxSizing: "border-box" }}
                       >
                         <Image
                           src={scrollSrc}
