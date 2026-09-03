@@ -387,30 +387,15 @@ export default function CaseStudyPage() {
               {project.research ?? ""}
             </p>
 
-            {/* Right — research video, scrollable image, or placeholder */}
-            {project.researchVideo ? (
-              <div style={{ aspectRatio: "4 / 3", borderRadius: "16px", overflow: "hidden", backgroundColor: "#F5F2EB", padding: "24px", boxSizing: "border-box" }}>
-                <video
-                  src={project.researchVideo}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }}
-                />
-              </div>
-            ) : project.researchImage ? (
-              <div
-                className="ve-scroll"
-                style={{ aspectRatio: "4 / 3", borderRadius: "16px", overflowY: "auto", overflowX: "hidden", backgroundColor: "#E8E4DC", padding: "20px", boxSizing: "border-box" }}
-              >
+            {/* Right — research image or placeholder */}
+            {project.researchImage ? (
+              <div style={{ position: "relative", aspectRatio: "4 / 3", borderRadius: "16px", overflow: "hidden" }}>
                 <Image
                   src={project.researchImage}
                   alt={`${project.title} — research`}
-                  width={0}
-                  height={0}
+                  fill
+                  style={{ objectFit: "cover" }}
                   sizes="(max-width: 768px) 100vw, 45vw"
-                  style={{ width: "100%", height: "auto", display: "block" }}
                 />
               </div>
             ) : (
