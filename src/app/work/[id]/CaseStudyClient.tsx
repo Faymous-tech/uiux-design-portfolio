@@ -389,13 +389,17 @@ export default function CaseStudyPage() {
 
             {/* Right — research visual or placeholder */}
             {project.researchImage ? (
-              <div style={{ position: "relative", aspectRatio: "4 / 3", borderRadius: "16px", overflow: "hidden" }}>
+              <div
+                className="ve-scroll"
+                style={{ aspectRatio: "4 / 3", borderRadius: "16px", overflowY: "auto", overflowX: "hidden" }}
+              >
                 <Image
                   src={project.researchImage}
                   alt={`${project.title} — research`}
-                  fill
-                  style={{ objectFit: "cover" }}
+                  width={0}
+                  height={0}
                   sizes="(max-width: 768px) 100vw, 45vw"
+                  style={{ width: "100%", height: "auto", display: "block" }}
                 />
               </div>
             ) : (

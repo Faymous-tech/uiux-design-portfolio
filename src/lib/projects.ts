@@ -62,6 +62,7 @@ export const projects: Project[] = [
     role: "UI/UX Designer",
     timeline: "2023–2024",
     tools: "Figma, FigJam",
+    researchImage: "/images/nanaade/nanaade-research-board.png",
     problem: "Young Africans face a disconnected job market — career guidance, skill-building, and employment opportunities exist in silos, making it difficult to find a clear path from education to employment.",
     solution: "Nanaade bridges that gap with an AI-powered platform that matches users to career pathways, tracks skill development, and connects them directly to relevant opportunities.",
     story: [
