@@ -537,7 +537,7 @@ export default function CaseStudyPage() {
                       <div
                         className="ve-scroll"
                         style={ci === 0
-                          ? { width: "100%", height: "560px", overflow: "hidden", padding: "0", boxSizing: "border-box" }
+                          ? { width: "100%", overflow: "hidden", padding: "0", boxSizing: "border-box" }
                           : { width: "100%", height: "100%", overflowY: "auto", overflowX: "hidden", padding: "20px", boxSizing: "border-box" }}
                       >
                         <Image
@@ -547,7 +547,7 @@ export default function CaseStudyPage() {
                           height={0}
                           sizes="(max-width: 768px) 100vw, 45vw"
                           style={ci === 0
-                            ? { width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 88%", display: "block" }
+                            ? { width: "100%", height: "auto", display: "block" }
                             : { width: "100%", height: "auto", display: "block" }}
                         />
                       </div>
