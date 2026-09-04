@@ -528,6 +528,7 @@ export default function CaseStudyPage() {
                       overflow:     "hidden",
                       position:     "relative",
                       backgroundColor: "#E8E4DC",
+                      height:       ci === 0 ? "auto" : undefined,
                       display:      scrollSrc || card ? "block" : "flex",
                       alignItems:   scrollSrc || card ? undefined : "center",
                       justifyContent: scrollSrc || card ? undefined : "center",
