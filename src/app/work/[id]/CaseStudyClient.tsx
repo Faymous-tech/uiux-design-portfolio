@@ -547,7 +547,7 @@ export default function CaseStudyPage() {
                           height={0}
                           sizes="(max-width: 768px) 100vw, 45vw"
                           style={ci === 0
-                            ? { width: "100%", height: "auto", display: "block" }
+                            ? { width: "100%", height: "auto", objectFit: "cover", objectPosition: "center 72%", display: "block" }
                             : { width: "100%", height: "auto", display: "block" }}
                         />
                       </div>
