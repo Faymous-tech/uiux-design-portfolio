@@ -20,6 +20,7 @@ export type Project = {
   visualExplorationsImage?: string
   moreFlowsImage1?: string
   moreFlowsImage2?: string
+  moreFlowsImage3?: string
   showcaseImages?: { src: string; caption: string }[]
   processImages?: { src: string; caption: string }[]
 }
@@ -68,6 +69,7 @@ export const projects: Project[] = [
     visualExplorationsImage: "/images/nanaade/nanaade-explorations-bento.png",
     moreFlowsImage1: "/images/nanaade/nanaade-moreflows-1.jpg",
     moreFlowsImage2: "/images/nanaade/nanaade-moreflows-2.png",
+    moreFlowsImage3: "/images/nanaade/nanaade-moreflows-3.png",
     research: "The research phase focused on understanding how young Africans experience the gap between education and employment. We conducted interviews with jobseekers, students, and career switchers across multiple markets, alongside competitive analysis of existing job platforms and journey mapping of the full path from graduation to hire. Early findings showed that job boards alone weren't enough — people needed active guidance, not just listings. Designing for a pan-African audience also meant accounting for language differences, device constraints, and varying levels of digital literacy from the start.",
     problem: "Young Africans face a disconnected job market — career guidance, skill-building, and employment opportunities exist in silos, making it difficult to find a clear path from education to employment.",
     solution: "Nanaade bridges that gap with an AI-powered platform that matches users to career pathways, tracks skill development, and connects them directly to relevant opportunities.",

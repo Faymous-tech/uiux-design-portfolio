@@ -514,59 +514,152 @@ export default function CaseStudyPage() {
 
               {/* Two half-width cards */}
               <div style={{ display: "flex", gap: "24px", flexWrap: "wrap" }}>
-                {([
-                  { card: cardA, scrollSrc: project.moreFlowsImage1 },
-                  { card: cardB, scrollSrc: project.moreFlowsImage2 },
-                ] as { card: typeof cardA; scrollSrc: string | undefined }[]).map(({ card, scrollSrc }, ci) => (
-                  <div
-                    key={ci}
-                    className="ds-card"
-                    style={{
-                      flex:         "1 1 calc(50% - 12px)",
-                      minWidth:     "280px",
-                      borderRadius: "16px",
-                      overflow:     "hidden",
-                      position:     "relative",
-                      backgroundColor: "#E8E4DC",
-                      height:       ci === 0 ? "auto" : undefined,
-                      display:      scrollSrc || card ? "block" : "flex",
-                      alignItems:   scrollSrc || card ? undefined : "center",
-                      justifyContent: scrollSrc || card ? undefined : "center",
-                    }}
-                  >
-                    {scrollSrc ? (
+                {project.moreFlowsImage3 ? (
+                  <>
+                    {/* Box 1 — unchanged */}
+                    <div
+                      className="ds-card"
+                      style={{
+                        flex:            "1 1 calc(50% - 12px)",
+                        minWidth:        "280px",
+                        borderRadius:    "16px",
+                        overflow:        "hidden",
+                        position:        "relative",
+                        backgroundColor: "#E8E4DC",
+                        height:          "auto",
+                        display:         project.moreFlowsImage1 || cardA ? "block" : "flex",
+                        alignItems:      project.moreFlowsImage1 || cardA ? undefined : "center",
+                        justifyContent:  project.moreFlowsImage1 || cardA ? undefined : "center",
+                      }}
+                    >
+                      {project.moreFlowsImage1 ? (
+                        <div className="ve-scroll" style={{ width: "100%", overflow: "hidden", padding: "0", boxSizing: "border-box" }}>
+                          <Image
+                            src={project.moreFlowsImage1}
+                            alt={`${project.title} — ${label} 1`}
+                            width={0}
+                            height={0}
+                            sizes="(max-width: 768px) 100vw, 45vw"
+                            style={{ width: "100%", height: "auto", display: "block" }}
+                          />
+                        </div>
+                      ) : cardA ? (
+                        <Image src={cardA.src} alt={`${project.title} — ${label} 1`} fill style={{ objectFit: "cover" }} sizes="(max-width: 768px) 100vw, 45vw" />
+                      ) : (
+                        <span style={{ fontFamily: "var(--font-display)", fontWeight: 400, fontSize: "13px", color: "#6B6B6B" }}>{placeholderText}</span>
+                      )}
+                    </div>
+                    {/* Right column: box 2 + box 3 */}
+                    <div style={{ display: "flex", flexDirection: "column", gap: "24px", flex: "1" }}>
+                      {/* Box 2 — verbatim styles */}
                       <div
-                        className="ve-scroll"
-                        style={ci === 0
-                          ? { width: "100%", overflow: "hidden", padding: "0", boxSizing: "border-box" }
-                          : { width: "100%", height: "100%", overflowY: "auto", overflowX: "hidden", padding: "20px", boxSizing: "border-box" }}
+                        className="ds-card"
+                        style={{
+                          flex:            "1 1 calc(50% - 12px)",
+                          minWidth:        "280px",
+                          borderRadius:    "16px",
+                          overflow:        "hidden",
+                          position:        "relative",
+                          backgroundColor: "#E8E4DC",
+                          height:          undefined,
+                          display:         project.moreFlowsImage2 || cardB ? "block" : "flex",
+                          alignItems:      project.moreFlowsImage2 || cardB ? undefined : "center",
+                          justifyContent:  project.moreFlowsImage2 || cardB ? undefined : "center",
+                        }}
+                      >
+                        {project.moreFlowsImage2 ? (
+                          <div className="ve-scroll" style={{ width: "100%", height: "100%", overflowY: "auto", overflowX: "hidden", padding: "20px", boxSizing: "border-box" }}>
+                            <Image
+                              src={project.moreFlowsImage2}
+                              alt={`${project.title} — ${label} 2`}
+                              width={0}
+                              height={0}
+                              sizes="(max-width: 768px) 100vw, 45vw"
+                              style={{ width: "100%", height: "auto", display: "block" }}
+                            />
+                          </div>
+                        ) : cardB ? (
+                          <Image src={cardB.src} alt={`${project.title} — ${label} 2`} fill style={{ objectFit: "cover" }} sizes="(max-width: 768px) 100vw, 45vw" />
+                        ) : (
+                          <span style={{ fontFamily: "var(--font-display)", fontWeight: 400, fontSize: "13px", color: "#6B6B6B" }}>{placeholderText}</span>
+                        )}
+                      </div>
+                      {/* Box 3 */}
+                      <div
+                        className="ds-card"
+                        style={{
+                          borderRadius: "16px",
+                          overflow:     "hidden",
+                          height:       "auto",
+                          padding:      0,
+                        }}
                       >
                         <Image
-                          src={scrollSrc}
-                          alt={`${project.title} — ${label} ${ci + 1}`}
+                          src={project.moreFlowsImage3}
+                          alt={`${project.title} — ${label} 3`}
                           width={0}
                           height={0}
                           sizes="(max-width: 768px) 100vw, 45vw"
-                          style={ci === 0
-                            ? { width: "100%", height: "auto", display: "block" }
-                            : { width: "100%", height: "auto", display: "block" }}
+                          style={{ width: "100%", height: "auto", display: "block" }}
                         />
                       </div>
-                    ) : card ? (
-                      <Image
-                        src={card.src}
-                        alt={`${project.title} — ${label} ${ci + 1}`}
-                        fill
-                        style={{ objectFit: "cover" }}
-                        sizes="(max-width: 768px) 100vw, 45vw"
-                      />
-                    ) : (
-                      <span style={{ fontFamily: "var(--font-display)", fontWeight: 400, fontSize: "13px", color: "#6B6B6B" }}>
-                        {placeholderText}
-                      </span>
-                    )}
-                  </div>
-                ))}
+                    </div>
+                  </>
+                ) : (
+                  ([
+                    { card: cardA, scrollSrc: project.moreFlowsImage1 },
+                    { card: cardB, scrollSrc: project.moreFlowsImage2 },
+                  ] as { card: typeof cardA; scrollSrc: string | undefined }[]).map(({ card, scrollSrc }, ci) => (
+                    <div
+                      key={ci}
+                      className="ds-card"
+                      style={{
+                        flex:         "1 1 calc(50% - 12px)",
+                        minWidth:     "280px",
+                        borderRadius: "16px",
+                        overflow:     "hidden",
+                        position:     "relative",
+                        backgroundColor: "#E8E4DC",
+                        height:       ci === 0 ? "auto" : undefined,
+                        display:      scrollSrc || card ? "block" : "flex",
+                        alignItems:   scrollSrc || card ? undefined : "center",
+                        justifyContent: scrollSrc || card ? undefined : "center",
+                      }}
+                    >
+                      {scrollSrc ? (
+                        <div
+                          className="ve-scroll"
+                          style={ci === 0
+                            ? { width: "100%", overflow: "hidden", padding: "0", boxSizing: "border-box" }
+                            : { width: "100%", height: "100%", overflowY: "auto", overflowX: "hidden", padding: "20px", boxSizing: "border-box" }}
+                        >
+                          <Image
+                            src={scrollSrc}
+                            alt={`${project.title} — ${label} ${ci + 1}`}
+                            width={0}
+                            height={0}
+                            sizes="(max-width: 768px) 100vw, 45vw"
+                            style={ci === 0
+                              ? { width: "100%", height: "auto", display: "block" }
+                              : { width: "100%", height: "auto", display: "block" }}
+                          />
+                        </div>
+                      ) : card ? (
+                        <Image
+                          src={card.src}
+                          alt={`${project.title} — ${label} ${ci + 1}`}
+                          fill
+                          style={{ objectFit: "cover" }}
+                          sizes="(max-width: 768px) 100vw, 45vw"
+                        />
+                      ) : (
+                        <span style={{ fontFamily: "var(--font-display)", fontWeight: 400, fontSize: "13px", color: "#6B6B6B" }}>
+                          {placeholderText}
+                        </span>
+                      )}
+                    </div>
+                  ))
+                )}
               </div>
 
               {/* Context one-liner */}
