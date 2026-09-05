@@ -108,7 +108,7 @@ export const projects: Project[] = [
     category: "Fintech · Mobile",
     year: "2024",
     description: "A mobile-first mortgage and property investment platform that combines real estate discovery with fintech infrastructure into one seamless experience.",
-    heroImage: "/images/dexcimal-hero.png",
+    heroImage: "/images/dexcimal/dexcimal-hero.png",
     tags: ["Product Design", "Mobile", "Fintech", "PropTech"],
     color: "#5DCAA5",
     role: "UI/UX Designer",
@@ -124,6 +124,7 @@ export const projects: Project[] = [
       "The mobile-first approach meant rethinking how complex financial data could be digested on a small screen. Charts were simplified, forms were broken into digestible steps, and critical information was always visible without excessive scrolling. The result is a platform that feels less like banking software and more like a guided conversation toward homeownership.",
     ],
     outcome: "A streamlined platform that transforms a traditionally fragmented process into a single, trustworthy digital journey.",
+    research: "The research phase focused on understanding why taking the first step toward homeownership felt so daunting. We interviewed first-time buyers, renters weighing their options, and small-scale property investors to map where the journey broke down — and found the friction wasn't a lack of tools, but too many disconnected ones. People juggled separate apps to browse listings, check what they could afford, and understand financing, never sure who to trust or what a number really meant. Competitive analysis showed most fintech and property platforms leaned on dense jargon and hidden fees that eroded confidence at the exact moments users needed reassurance. The clearest signal was that trust, not features, decided whether someone moved forward — so the opportunity was a single, transparent, mobile-first path where verification, eligibility, and financing lived together and every number was explained in plain language.",
     showcaseImages: [],
   },
   {
