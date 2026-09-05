@@ -528,7 +528,7 @@ export default function CaseStudyPage() {
                       overflow:     "hidden",
                       position:     "relative",
                       backgroundColor: "#E8E4DC",
-                      height:       ci === 0 ? "auto" : undefined,
+                      height:       undefined,
                       display:      scrollSrc || card ? "block" : "flex",
                       alignItems:   scrollSrc || card ? undefined : "center",
                       justifyContent: scrollSrc || card ? undefined : "center",
@@ -537,9 +537,7 @@ export default function CaseStudyPage() {
                     {scrollSrc ? (
                       <div
                         className="ve-scroll"
-                        style={ci === 0
-                          ? { width: "100%", overflow: "hidden", padding: "0", boxSizing: "border-box" }
-                          : { width: "100%", height: "100%", overflowY: "auto", overflowX: "hidden", padding: "20px", boxSizing: "border-box" }}
+                        style={{ width: "100%", height: "100%", overflowY: "auto", overflowX: "hidden", padding: "20px", boxSizing: "border-box" }}
                       >
                         <Image
                           src={scrollSrc}
