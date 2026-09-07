@@ -108,7 +108,7 @@ export const projects: Project[] = [
     category: "Fintech · Mobile",
     year: "2024",
     description: "A mobile-first mortgage and property investment platform that combines real estate discovery with fintech infrastructure into one seamless experience.",
-    heroImage: "/images/dexcimal/dexcimal-hero.png",
+    heroImage: "/images/dexcimal/dexcimal-visual-hero.png",
     researchVideo: "/images/dexcimal/dexcimal-research.mp4",
     visualExplorationsImage: "/images/dexcimal/dexcimal-visual-explorations.png",
     tags: ["Product Design", "Mobile", "Fintech", "PropTech"],
