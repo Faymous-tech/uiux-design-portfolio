@@ -111,6 +111,8 @@ export const projects: Project[] = [
     heroImage: "/images/dexcimal/dexcimal-visual-hero.png",
     researchVideo: "/images/dexcimal/dexcimal-research.mp4",
     visualExplorationsImage: "/images/dexcimal/dexcimal-homepage-redesign.png",
+    moreFlowsImage1: "/images/dexcimal/dexcimal-moreflows-1.jpg",
+    moreFlowsImage2: "/images/dexcimal/dexcimal-moreflows-2.png",
     tags: ["Product Design", "Mobile", "Fintech", "PropTech"],
     color: "#5DCAA5",
     role: "UI/UX Designer",
