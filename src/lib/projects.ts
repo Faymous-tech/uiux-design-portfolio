@@ -88,6 +88,7 @@ export const projects: Project[] = [
     year: "2024",
     description: "An editorial e-commerce experience for a streetwear brand built to outlast trends — every seam a signature, every fabric with a reason.",
     heroImage: "/images/addicto-hero.png",
+    researchVideo: "/images/addicto/addicto-research-journey.mp4",
     tags: ["Web Design", "E-commerce", "Fashion", "Editorial"],
     color: "#1A1A1A",
     role: "UI/UX Designer",
