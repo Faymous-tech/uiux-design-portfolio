@@ -110,7 +110,7 @@ export const projects: Project[] = [
     description: "A mobile-first mortgage and property investment platform that combines real estate discovery with fintech infrastructure into one seamless experience.",
     heroImage: "/images/dexcimal/dexcimal-visual-hero.png",
     researchVideo: "/images/dexcimal/dexcimal-research.mp4",
-    visualExplorationsImage: "/images/dexcimal/dexcimal-visual-explorations.png",
+    visualExplorationsImage: "/images/dexcimal/dexcimal-homepage-redesign.png",
     tags: ["Product Design", "Mobile", "Fintech", "PropTech"],
     color: "#5DCAA5",
     role: "UI/UX Designer",

@@ -448,7 +448,7 @@ export default function CaseStudyPage() {
             <div style={{ position: "relative", borderRadius: "16px", overflow: "hidden", width: "100%", backgroundColor: "#E8E4DC" }}>
               <div
                 className="ve-scroll"
-                style={project.id === "dexcimal" ? { aspectRatio: "16 / 9", overflow: "hidden", width: "100%", padding: "0", boxSizing: "border-box" } : { aspectRatio: "16 / 9", overflowY: "auto", overflowX: "hidden", width: "100%", padding: "20px", boxSizing: "border-box" }}
+                style={{ aspectRatio: "16 / 9", overflowY: "auto", overflowX: "hidden", width: "100%", padding: "20px", boxSizing: "border-box" }}
               >
                 <Image
                   src={project.visualExplorationsImage}
@@ -456,7 +456,7 @@ export default function CaseStudyPage() {
                   width={0}
                   height={0}
                   sizes="(max-width: 768px) 100vw, 90vw"
-                  style={project.id === "dexcimal" ? { width: "100%", height: "100%", objectFit: "cover", display: "block" } : { width: "100%", height: "auto", display: "block" }}
+                  style={{ width: "100%", height: "auto", display: "block" }}
                 />
               </div>
             </div>
