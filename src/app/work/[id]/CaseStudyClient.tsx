@@ -560,7 +560,9 @@ export default function CaseStudyPage() {
                     {scrollSrc ? (
                       <div
                         className="ve-scroll"
-                        style={ci === 0
+                        style={project.id === "addicto"
+                          ? { width: "100%", height: "100%", overflow: "hidden", padding: "0", boxSizing: "border-box" }
+                          : ci === 0
                           ? { width: "100%", height: "100%", overflow: "hidden", padding: "0", boxSizing: "border-box" }
                           : project.id === "dexcimal"
                             ? { width: "100%", height: "100%", overflow: "hidden", padding: "0", boxSizing: "border-box" }
@@ -572,7 +574,9 @@ export default function CaseStudyPage() {
                           width={0}
                           height={0}
                           sizes="(max-width: 768px) 100vw, 45vw"
-                          style={ci === 0
+                          style={project.id === "addicto"
+                            ? { width: "100%", height: "100%", objectFit: "contain", objectPosition: "center", display: "block" }
+                            : ci === 0
                             ? { width: "100%", height: "100%", objectFit: "cover", objectPosition: project.id === "dexcimal" ? "center" : "center 100%", display: "block" }
                             : project.id === "dexcimal"
                               ? { width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }

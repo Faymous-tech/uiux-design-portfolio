@@ -90,6 +90,8 @@ export const projects: Project[] = [
     heroImage: "/images/addicto-hero.png",
     researchVideo: "/images/addicto/addicto-research-journey.mp4",
     visualExplorationsImage: "/images/addicto/addicto-visual-explorations.jpg",
+    moreFlowsImage1: "/images/addicto/addicto-moreflows-1.png",
+    moreFlowsImage2: "/images/addicto/addicto-moreflows-2.jpg",
     tags: ["Web Design", "E-commerce", "Fashion", "Editorial"],
     color: "#1A1A1A",
     role: "UI/UX Designer",
