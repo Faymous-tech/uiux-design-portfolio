@@ -202,6 +202,10 @@ export default function CaseStudyPage() {
         .ve-scroll::-webkit-scrollbar { width: 4px; }
         .ve-scroll::-webkit-scrollbar-track { background: transparent; }
         .ve-scroll::-webkit-scrollbar-thumb { background: rgba(10,10,10,0.2); border-radius: 2px; }
+        .ve-scroll-x { scrollbar-width: thin; scrollbar-color: rgba(10,10,10,0.2) transparent; }
+        .ve-scroll-x::-webkit-scrollbar { height: 4px; }
+        .ve-scroll-x::-webkit-scrollbar-track { background: transparent; }
+        .ve-scroll-x::-webkit-scrollbar-thumb { background: rgba(10,10,10,0.2); border-radius: 2px; }
       `}</style>
 
       <Nav />
@@ -444,22 +448,41 @@ export default function CaseStudyPage() {
 
           {/* Full-width image */}
           {project.visualExplorationsImage ? (
-            /* Scrollable treatment — outer clips border-radius, gradient stays fixed */
-            <div style={{ position: "relative", borderRadius: "16px", overflow: "hidden", width: "100%", backgroundColor: "#E8E4DC" }}>
-              <div
-                className="ve-scroll"
-                style={{ aspectRatio: "16 / 9", overflowY: "auto", overflowX: "hidden", width: "100%", padding: "20px", boxSizing: "border-box" }}
-              >
-                <Image
-                  src={project.visualExplorationsImage}
-                  alt={`${project.title} — visual explorations`}
-                  width={0}
-                  height={0}
-                  sizes="(max-width: 768px) 100vw, 90vw"
-                  style={{ width: "100%", height: "auto", display: "block" }}
-                />
+            project.id === "addicto" ? (
+              /* Addicto — wide filmstrip: fills box height, scrolls horizontally */
+              <div style={{ position: "relative", borderRadius: "16px", overflow: "hidden", width: "100%", backgroundColor: "#E8E4DC" }}>
+                <div
+                  className="ve-scroll-x"
+                  style={{ aspectRatio: "16 / 9", overflowX: "auto", overflowY: "hidden", width: "100%", padding: "20px", boxSizing: "border-box" }}
+                >
+                  <Image
+                    src={project.visualExplorationsImage}
+                    alt={`${project.title} — visual explorations`}
+                    width={0}
+                    height={0}
+                    sizes="90vw"
+                    style={{ height: "100%", width: "auto", maxWidth: "none", display: "block" }}
+                  />
+                </div>
               </div>
-            </div>
+            ) : (
+              /* Scrollable treatment — outer clips border-radius, gradient stays fixed */
+              <div style={{ position: "relative", borderRadius: "16px", overflow: "hidden", width: "100%", backgroundColor: "#E8E4DC" }}>
+                <div
+                  className="ve-scroll"
+                  style={{ aspectRatio: "16 / 9", overflowY: "auto", overflowX: "hidden", width: "100%", padding: "20px", boxSizing: "border-box" }}
+                >
+                  <Image
+                    src={project.visualExplorationsImage}
+                    alt={`${project.title} — visual explorations`}
+                    width={0}
+                    height={0}
+                    sizes="(max-width: 768px) 100vw, 90vw"
+                    style={{ width: "100%", height: "auto", display: "block" }}
+                  />
+                </div>
+              </div>
+            )
           ) : (
             /* Default treatment — cropped fill image */
             <div style={{ position: "relative", aspectRatio: "16 / 9", borderRadius: "16px", overflow: "hidden", width: "100%" }}>
