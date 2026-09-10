@@ -575,7 +575,7 @@ export default function CaseStudyPage() {
                           height={0}
                           sizes="(max-width: 768px) 100vw, 45vw"
                           style={project.id === "addicto"
-                            ? { width: "100%", height: "100%", objectFit: "contain", objectPosition: "center", display: "block" }
+                            ? { width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }
                             : ci === 0
                             ? { width: "100%", height: "100%", objectFit: "cover", objectPosition: project.id === "dexcimal" ? "center" : "center 100%", display: "block" }
                             : project.id === "dexcimal"
