@@ -465,6 +465,18 @@ export default function CaseStudyPage() {
                   />
                 </div>
               </div>
+            ) : project.id === "repmirror" ? (
+              /* RepMirror — 16:9 screens strip: flush fill, no padding, no scroll */
+              <div style={{ position: "relative", borderRadius: "16px", overflow: "hidden", width: "100%", backgroundColor: "#191919" }}>
+                <Image
+                  src={project.visualExplorationsImage}
+                  alt={`${project.title} — visual explorations`}
+                  width={0}
+                  height={0}
+                  sizes="90vw"
+                  style={{ width: "100%", height: "auto", display: "block" }}
+                />
+              </div>
             ) : (
               /* Scrollable treatment — outer clips border-radius, gradient stays fixed */
               <div style={{ position: "relative", borderRadius: "16px", overflow: "hidden", width: "100%", backgroundColor: "#E8E4DC" }}>
