@@ -143,6 +143,7 @@ export const projects: Project[] = [
     year: "2024",
     description: "An AI-powered personal training app that uses computer vision to track workout form in real-time, count reps, and generate personalized plans — all on-device.",
     heroImage: "/images/repmirror-hero.png",
+    researchImage: "/images/repmirror/repmirror-research.jpg",
     tags: ["Product Design", "Mobile", "AI", "Health"],
     color: "#F2A623",
     role: "UI/UX Designer",
