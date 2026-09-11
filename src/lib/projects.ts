@@ -145,6 +145,8 @@ export const projects: Project[] = [
     heroImage: "/images/repmirror-hero.png",
     researchImage: "/images/repmirror/repmirror-research.jpg",
     visualExplorationsImage: "/images/repmirror/repmirror-visual-explorations.jpg",
+    moreFlowsImage1: "/images/repmirror/repmirror-moreflows-1.jpg",
+    moreFlowsImage2: "/images/repmirror/repmirror-moreflows-2.jpg",
     tags: ["Product Design", "Mobile", "AI", "Health"],
     color: "#F2A623",
     role: "UI/UX Designer",
