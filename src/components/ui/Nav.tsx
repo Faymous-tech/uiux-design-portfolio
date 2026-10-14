@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { projects } from "@/lib/projects";
 
 const navLinks = [
   { label: "Work",    href: "#work" },
@@ -8,14 +10,10 @@ const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
-const overlayLinks = [
-  ...navLinks,
-  { label: "Get in touch", href: "#contact" },
-];
-
 export default function Nav() {
-  const [scrolled,  setScrolled]  = useState(false);
-  const [menuOpen,  setMenuOpen]  = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [workOpen, setWorkOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -29,7 +27,25 @@ export default function Nav() {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
-  const close = () => setMenuOpen(false);
+  const close = () => { setMenuOpen(false); setWorkOpen(false); };
+
+  const numStyle = {
+    fontFamily: "var(--font-display)",
+    fontSize: "14px",
+    fontWeight: 500,
+    color: "#b3ad9f",
+    width: "24px",
+    flexShrink: 0,
+  } as const;
+
+  const wordStyle = {
+    fontFamily: "var(--font-display)",
+    fontSize: "42px",
+    fontWeight: 700,
+    color: "#0A0A0A",
+    lineHeight: 1,
+    letterSpacing: "-0.5px",
+  } as const;
 
   return (
     <>
@@ -50,6 +66,11 @@ export default function Nav() {
             padding-right: 24px;
           }
         }
+        @keyframes navFade { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes navSubDrop {
+          from { opacity: 0; transform: translateY(-6px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
       `}</style>
 
       <header
@@ -62,7 +83,7 @@ export default function Nav() {
         }}
       >
         <nav className="nav-inner h-16 flex items-center justify-between">
-          {/* ── Name / logo ── */}
+          {/* Name / logo */}
           <a
             href="/"
             className="text-[#0A0A0A] tracking-tight shrink-0"
@@ -75,7 +96,7 @@ export default function Nav() {
             Faymous Aisida
           </a>
 
-          {/* ── Desktop links + CTA (hidden below md) ── */}
+          {/* Desktop links + CTA */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
@@ -122,7 +143,7 @@ export default function Nav() {
             </a>
           </div>
 
-          {/* ── Mobile hamburger (visible below md) ── */}
+          {/* Mobile hamburger */}
           <button
             className="flex md:hidden items-center justify-center"
             style={{ width: "44px", height: "44px" }}
@@ -138,55 +159,146 @@ export default function Nav() {
         </nav>
       </header>
 
-      {/* ── Full-screen mobile overlay ── */}
+      {/* Full-screen mobile overlay — editorial cream */}
       {menuOpen && (
         <div
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center nav-overlay"
-          style={{ backgroundColor: "#0A0A0A" }}
+          className="fixed inset-0 z-[100]"
+          style={{
+            backgroundColor: "#F5F2EB",
+            display: "flex",
+            flexDirection: "column",
+            padding: "30px 24px 28px",
+            animation: "navFade 0.25s ease",
+            overflowY: "auto",
+          }}
         >
-          {/* X — top-right, aligned with hamburger position */}
-          <button
-            onClick={close}
-            aria-label="Close menu"
-            className="absolute top-0 flex items-center justify-center"
+          {/* Watermark */}
+          <span
+            aria-hidden="true"
             style={{
-              right: "var(--section-px)",
-              height: "64px",
-              width: "44px",
+              position: "absolute",
+              bottom: "-30px",
+              left: "-12px",
+              fontFamily: "var(--font-display)",
+              fontSize: "170px",
+              fontWeight: 800,
+              color: "rgba(10,10,10,0.045)",
+              letterSpacing: "-10px",
+              whiteSpace: "nowrap",
+              lineHeight: 1,
+              pointerEvents: "none",
+              userSelect: "none",
             }}
           >
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <path
-                d="M1 1L17 17M17 1L1 17"
-                stroke="#F5F2EB"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-              />
-            </svg>
-          </button>
+            WORK
+          </span>
 
-          {/* Stacked links */}
-          <nav className="flex flex-col items-center gap-10">
-            {overlayLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={close}
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontWeight: 700,
-                  fontSize: "36px",
-                  color: "#F5F2EB",
-                  textDecoration: "none",
-                  minHeight: "44px",
-                  display: "flex",
-                  alignItems: "center",
-                }}
+          {/* Top bar */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", zIndex: 2 }}>
+            <a
+              href="/"
+              onClick={close}
+              style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "18px", color: "#0A0A0A", textDecoration: "none" }}
+            >
+              Faymous Aisida
+            </a>
+            <button
+              onClick={close}
+              aria-label="Close menu"
+              style={{ width: "44px", height: "44px", display: "flex", alignItems: "center", justifyContent: "center", background: "transparent", border: "none", cursor: "pointer" }}
+            >
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M1 1L17 17M17 1L1 17" stroke="#0A0A0A" strokeWidth="1.5" strokeLinecap="round" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Overline */}
+          <div style={{ marginTop: "30px", fontFamily: "var(--font-display)", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#9a9589", fontWeight: 500, zIndex: 2 }}>
+            Menu
+          </div>
+
+          {/* Menu */}
+          <nav style={{ marginTop: "18px", zIndex: 2, flex: 1 }}>
+            {/* 01 Work — accordion */}
+            <div style={{ padding: "12px 0", borderBottom: "1px solid rgba(10,10,10,0.08)" }}>
+              <button
+                onClick={() => setWorkOpen((v) => !v)}
+                aria-expanded={workOpen}
+                style={{ width: "100%", display: "flex", alignItems: "center", gap: "16px", background: "transparent", border: "none", padding: 0, cursor: "pointer", textAlign: "left" }}
               >
-                {link.label}
-              </a>
-            ))}
+                <span style={numStyle}>01</span>
+                <span style={wordStyle}>Work</span>
+                <svg
+                  width="16" height="16" viewBox="0 0 16 16" fill="none"
+                  style={{ marginLeft: "auto", transform: workOpen ? "rotate(180deg)" : "none", transition: "transform 0.3s ease" }}
+                >
+                  <path d="M4 6l4 4 4-4" stroke="#0A0A0A" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+
+              {workOpen && (
+                <div style={{ marginTop: "16px", marginLeft: "40px", display: "flex", flexDirection: "column", gap: "16px", paddingBottom: "6px", animation: "navSubDrop 0.3s ease" }}>
+                  {projects.map((p) => (
+                    <Link
+                      key={p.id}
+                      href={`/work/${p.id}`}
+                      onClick={close}
+                      style={{ display: "flex", alignItems: "center", textDecoration: "none" }}
+                    >
+                      <span style={{ fontFamily: "var(--font-display)", fontSize: "17px", fontWeight: 600, color: "#0A0A0A", whiteSpace: "nowrap" }}>
+                        {p.title}
+                      </span>
+                      <span style={{ flex: 1, borderBottom: "2px dotted #cbc5b6", margin: "0 14px" }} />
+                      <span style={{ fontFamily: "var(--font-display)", fontSize: "12.5px", color: "#9a9589", width: "74px", textAlign: "left", flexShrink: 0, whiteSpace: "nowrap" }}>
+                        {p.category.split("·")[0].trim()}
+                      </span>
+                      <span style={{ width: "22px", textAlign: "right", fontSize: "15px", color: "#bdb7a8", flexShrink: 0 }}>→</span>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* 02 About */}
+            <a
+              href="#about"
+              onClick={close}
+              style={{ display: "flex", alignItems: "center", gap: "16px", padding: "12px 0", borderBottom: "1px solid rgba(10,10,10,0.08)", textDecoration: "none" }}
+            >
+              <span style={numStyle}>02</span>
+              <span style={wordStyle}>About</span>
+            </a>
+
+            {/* 03 Contact */}
+            <a
+              href="#contact"
+              onClick={close}
+              style={{ display: "flex", alignItems: "center", gap: "16px", padding: "12px 0", borderBottom: "1px solid rgba(10,10,10,0.08)", textDecoration: "none" }}
+            >
+              <span style={numStyle}>03</span>
+              <span style={wordStyle}>Contact</span>
+            </a>
           </nav>
+
+          {/* Footer */}
+          <div style={{ zIndex: 2, marginTop: "18px" }}>
+            <a
+              href="#contact"
+              onClick={close}
+              style={{ display: "inline-flex", alignItems: "center", gap: "10px", border: "1px solid #0A0A0A", borderRadius: "999px", padding: "14px 24px", fontFamily: "var(--font-display)", fontSize: "15px", fontWeight: 500, color: "#0A0A0A", textDecoration: "none" }}
+            >
+              Get in touch <span>→</span>
+            </a>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "22px", fontFamily: "var(--font-display)", fontSize: "12px", color: "#9a9589" }}>
+              <div style={{ display: "flex", gap: "16px" }}>
+                <a href="https://linkedin.com/in/faymousaisida" target="_blank" rel="noreferrer" style={{ color: "#9a9589", textDecoration: "none" }}>LinkedIn</a>
+                <a href="https://dribbble.com/faymousaisida" target="_blank" rel="noreferrer" style={{ color: "#9a9589", textDecoration: "none" }}>Dribbble</a>
+                <a href="mailto:aisidafamous@gmail.com" style={{ color: "#9a9589", textDecoration: "none" }}>Email</a>
+              </div>
+              <span>Lagos, NG</span>
+            </div>
+          </div>
         </div>
       )}
     </>
