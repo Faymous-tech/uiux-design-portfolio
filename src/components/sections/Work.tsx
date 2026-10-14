@@ -132,11 +132,11 @@ export default function Work() {
           .card-tags       { justify-content: flex-start !important; }
         }
 
-        /* Mobile: disable sticky stacking */
+        /* Mobile: keep sticky stacking (natural height) */
         @media (max-width: 767px) {
           .sticky-cards-container { height: auto !important; }
           .sticky-card-wrapper    {
-            position:  static !important;
+            position:  sticky !important;
             transform: none !important;
             z-index:   auto !important;
           }
