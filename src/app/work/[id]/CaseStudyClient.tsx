@@ -397,14 +397,14 @@ export default function CaseStudyPage() {
 
             {/* Right — research video, image, or placeholder */}
             {project.researchVideo ? (
-              <div style={{ aspectRatio: "4 / 3", borderRadius: "16px", overflow: "hidden", backgroundColor: "#E8E4DC", padding: "32px", boxSizing: "border-box" }}>
+              <div style={{ borderRadius: "16px", overflow: "hidden" }}>
                 <video
                   src={project.researchVideo}
                   autoPlay
                   loop
                   muted
                   playsInline
-                  style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }}
+                  style={{ width: "100%", height: "auto", display: "block" }}
                 />
               </div>
             ) : project.researchImage ? (
