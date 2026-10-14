@@ -145,7 +145,7 @@ export default function CTA({
                       transition:  "opacity 0.5s ease-out, transform 0.5s ease-out",
                       marginRight: isLast ? 0 : "0.25em",
                       whiteSpace:  "nowrap",
-                      ...(isCircled ? { position: "relative", padding: "12px 10px" } : {}),
+                      ...(isCircled ? { position: "relative", padding: "12px 10px", marginLeft: "-10px" } : {}),
                     }}
                   >
                     {word}
