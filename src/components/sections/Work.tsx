@@ -90,9 +90,9 @@ export default function Work() {
         .project-card-link:hover .project-title { color: #6B6B6B; }
 
         /* Grey inner panel — responsive padding */
-        .card-image-panel { padding: 64px; }
-        @media (min-width: 768px) and (max-width: 1023px) { .card-image-panel { padding: 40px; } }
-        @media (max-width: 767px) { .card-image-panel { padding: 24px; } }
+        .card-image-panel { padding: 0; }
+        @media (min-width: 768px) and (max-width: 1023px) { .card-image-panel { padding: 0; } }
+        @media (max-width: 767px) { .card-image-panel { padding: 0; } }
 
         /* Grayscale default + scale/color on hover (desktop only) */
         .card-image-inner {
@@ -256,11 +256,11 @@ export default function Work() {
                     {/* Centered image — 60% width of the grey panel */}
                     <div
                       style={{
-                        width:        "60%",
+                        width:        "100%",
                         margin:       "0 auto",
                         aspectRatio:  "16 / 9",
                         overflow:     "hidden",
-                        borderRadius: "8px",
+                        borderRadius: "12px",
                         boxShadow:    "0 4px 16px rgba(0,0,0,0.10)",
                         position:     "relative",
                       }}
