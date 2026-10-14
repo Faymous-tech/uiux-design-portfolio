@@ -163,6 +163,7 @@ export default function CaseStudyPage() {
           transition: background 0.2s ease;
         }
         .more-row:hover { background: rgba(10,10,10,0.02); z-index: 10; }
+        .more-row-arrow { display: none; }
 
         .more-row-name {
           font-family: var(--font-display);
@@ -185,6 +186,7 @@ export default function CaseStudyPage() {
         @media (max-width: 767px) {
           .more-row-name { font-size: 20px; }
           .more-row-desc { display: none; }
+          .more-row-arrow { display: block; margin-left: auto; flex-shrink: 0; font-size: 22px; color: #0A0A0A; }
         }
 
         /* Showcase caption row */
@@ -706,6 +708,9 @@ export default function CaseStudyPage() {
 
                 {/* Description */}
                 <div className="more-row-desc">{p.description}</div>
+
+                {/* Mobile tap affordance */}
+                <span className="more-row-arrow" aria-hidden="true">→</span>
               </Link>
             );
           })}
