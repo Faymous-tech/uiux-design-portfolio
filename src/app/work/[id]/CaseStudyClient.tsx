@@ -206,6 +206,10 @@ export default function CaseStudyPage() {
         .ve-scroll-x::-webkit-scrollbar { height: 4px; }
         .ve-scroll-x::-webkit-scrollbar-track { background: transparent; }
         .ve-scroll-x::-webkit-scrollbar-thumb { background: rgba(10,10,10,0.2); border-radius: 2px; }
+        @media (max-width: 767px) {
+          .research-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+          .research-grid > p { order: 2; }
+        }
       `}</style>
 
       <Nav />
@@ -385,7 +389,7 @@ export default function CaseStudyPage() {
           </div>
           <div style={{ width: "100%", height: "1px", backgroundColor: "rgba(10,10,10,0.1)", marginBottom: "48px" }} />
 
-          <div style={{ display: "grid", gridTemplateColumns: "55fr 45fr", gap: "48px", alignItems: "start" }}>
+          <div className="research-grid" style={{ display: "grid", gridTemplateColumns: "55fr 45fr", gap: "48px", alignItems: "start" }}>
             {/* Left — research paragraph */}
             <p style={{ fontFamily: "var(--font-display)", fontWeight: 400, fontSize: "17px", color: "#0A0A0A", lineHeight: 1.8, maxWidth: "560px", margin: 0 }}>
               {project.research ?? ""}
